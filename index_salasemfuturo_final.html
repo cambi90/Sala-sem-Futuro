@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sala Sem Futuro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #f00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    header {
+      background-color: #111;
+      color: #f00;
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+      border-bottom: 3px dashed #f00;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .perfil-select {
+      margin: 2rem 0;
+      background: #111;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px red;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .perfil-select h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .perfil-select button {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      background: #222;
+      color: #f00;
+      border: 2px solid #f00;
+      border-radius: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .perfil-select button:hover {
+      background: #f00;
+      color: #000;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #111;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px #f00;
+      text-align: center;
+    }
+
+    .agenda-item {
+      background: #200;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border-radius: 0.5rem;
+      border-left: 5px solid #f00;
+    }
+
+    footer {
+      margin-top: 2rem;
+      color: #555;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💀 Sala Sem Futuro 💀</h1>
+    <p>Nem tente levar isso a sério 😎</p>
+  </header>
+
+  <div class="perfil-select">
+    <h2>Quem é você nessa bagaça?</h2>
+    <button onclick="window.location.href='painel.html'">Sou Estudante</button>
+    <button onclick="entrar('servidor')">Sou Servidor</button>
+    <button onclick="entrar('responsável')">Sou Responsável</button>
+  </div>
+
+  <div id="painel" class="cards" style="display:none;">
+    <div class="card">
+      <h3>Pendências</h3>
+      <p>💣 99+</p>
+    </div>
+    <div class="card">
+      <h3>Mensagens</h3>
+      <p>📬 0 lida (e nem vai ler)</p>
+    </div>
+    <div class="card">
+      <h3>Faltas</h3>
+      <p>❌ 6 (já era!)</p>
+    </div>
+    <div class="card">
+      <h3>Boletim</h3>
+      <p>📉 "A nota é um conceito!"</p>
+    </div>
+    <div class="card">
+      <h3>Conquistas</h3>
+      <p>🏆 Sobreviver à aula</p>
+    </div>
+  </div>
+
+  <section id="agenda" style="display:none; margin-top: 2rem; width: 100%; max-width: 500px;">
+    <h2>Agenda do caos 📅</h2>
+    <div class="agenda-item">
+      <strong>10/06:</strong> Reunião do Conselho da Galhofa
+    </div>
+    <div class="agenda-item">
+      <strong>18/06:</strong> Excursão pra lugar nenhum
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Sala Sem Futuro - Feito na zueira por você 😎
+  </footer>
+
+<script>
+  function entrar(tipo) {
+    alert('Bem-vindo, ' + tipo + ' do caos!');
+    document.getElementById('painel').style.display = 'grid';
+    document.getElementById('agenda').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
