@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel - Sala Sem Futuro</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .container {
+      padding: 1rem;
+    }
+
+    .saudacao {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+
+    .agenda, .pesquisa {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .agenda h3, .pesquisa h3 {
+      margin-top: 0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .trophy {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sala sem Futuro</h1>
+  </header>
+
+  <div class="container">
+    <div class="saudacao">
+      <p>Olá, <strong>Desesperado</strong></p>
+    </div>
+
+    <div class="grid">
+      <a href="pendencias.html"><div class="card">
+        <h2>99+</h2>
+        <p>Pendências</p>
+      </div></a>
+      <div class="card">
+        <h2>0</h2>
+        <p>Mensagens</p>
+      </div>
+      <a href="faltas.html"><div class="card">
+        <h2>6</h2>
+        <p>Faltas</p>
+      </div></a>
+      <a href="notas.html"><div class="card">
+        <h2>Boletim</h2>
+        <p>e Avaliações</p>
+      </div></a>
+      <a href="conquistas.html"><div class="card">
+        <div class="trophy">🏆</div>
+        <p>Ver Conquistas</p>
+      </div></a>
+    </div>
+
+    <div class="agenda">
+      <h3>Agenda</h3>
+      <p><strong>10/06 (ter)</strong> – Reunião do Conselho de Escola</p>
+      <p><strong>18/06 (qua)</strong> – Excursão Pedagógica</p>
+    </div>
+
+    <div class="pesquisa">
+      <h3>📢 Aviso</h3>
+      <p>Não há <strong>pesquisas</strong> a serem respondidas. Nem teria tempo mesmo.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Sala sem Futuro — Onde o amanhã vira um talvez.
+  </div>
+
+</body>
+</html>
