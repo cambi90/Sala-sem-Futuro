@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Provas - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #111;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #f00;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .card:hover {
+      background: #f00;
+      color: #000;
+    }
+    .feito {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+    .mensagem-final {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>☠️ Provas da Desilusão</h1>
+  <p>Simule que fez essas provas. Se marcar todas, o site vai te julgar.</p>
+
+  <div id="provas"></div>
+  <div id="msg" class="mensagem-final"></div>
+
+  <script>
+    const provas = [
+      { id: "p1", texto: "Prova surpresa de química" },
+      { id: "p2", texto: "Prova prática de enrolação" }
+    ];
+
+    function atualizar() {
+      const container = document.getElementById("provas");
+      container.innerHTML = "";
+      let feitas = 0;
+
+      provas.forEach(p => {
+        const feita = localStorage.getItem("feito_" + p.id) === "true";
+        if (feita) feitas++;
+
+        const div = document.createElement("div");
+        div.className = "card" + (feita ? " feito" : "");
+        div.textContent = p.texto;
+        div.onclick = () => marcarFeita(p.id);
+        container.appendChild(div);
+      });
+
+      if (feitas === provas.length) {
+        document.getElementById("msg").innerHTML = "😑 Fez todas as provas... decepcionante.";
+        localStorage.setItem("conquista_provas_finalizadas", "true");
+      }
+    }
+
+    function marcarFeita(id) {
+      localStorage.setItem("feito_" + id, "true");
+      atualizar();
+    }
+
+    window.onload = atualizar;
+  </script>
+</body>
+</html>
