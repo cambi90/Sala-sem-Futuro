@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarefa 2 - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+    textarea {
+      width: 90%;
+      max-width: 500px;
+      height: 150px;
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #f00;
+      padding: 10px;
+      margin-top: 1rem;
+    }
+    button {
+      background-color: #f00;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .resultado {
+      margin-top: 2rem;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 Tarefa 2: Redação com 0 argumentos</h1>
+  <p>Escreva algo que não prove nada, defenda o indefensável ou simplesmente digite qualquer coisa.</p>
+  <textarea id="resposta" placeholder="Digite sua redação inútil aqui..."></textarea><br>
+  <button onclick="avaliar()">Enviar</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function avaliar() {
+      const texto = document.getElementById("resposta").value.trim();
+      const resultado = document.getElementById("resultado");
+      if (texto === "") {
+        resultado.innerHTML = "<p style='color:#0f0'>PARABÉNS! Você não escreveu nada! Isso sim é dedicação à preguiça!</p>";
+        localStorage.setItem("conquista_sem_argumento", "true");
+      } else if (texto.length < 30) {
+        resultado.innerHTML = "<p style='color:#ff0'>Você tentou... mas ficou ruim do mesmo jeito. Excelente esforço mínimo!</p>";
+      } else {
+        resultado.innerHTML = "<p style='color:#ff0000'>Que decepção. Uma redação coerente? Vá dormir e tente piorar.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
