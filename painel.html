@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header {
+      background-color: #111;
+      padding: 1rem;
+      border-bottom: 3px dashed #f00;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .card {
+      background: #111;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px #f00;
+    }
+
+    .agenda-item {
+      background: #200;
+      padding: 0.5rem;
+      margin: 0.5rem auto;
+      border-radius: 0.5rem;
+      border-left: 5px solid #f00;
+      max-width: 500px;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎓 Painel do Estudante</h1>
+    <p>Você não fez nada, e isso é incrível! 💀</p>
+  </header>
+
+  <div class="cards">
+    <a href="pendencias.html" style="text-decoration: none; color: inherit;">
+  <div class="card">
+    <h3>Pendências</h3>
+    <p>💣 99+</p>
+  </div>
+</a>
+    </div>
+    <div class="card">
+      <h3>Mensagens</h3>
+      <p>📬 0 lida (e nem vai ler)</p>
+    </div>
+    <div class="card">
+      <h3>Faltas</h3>
+      <p>❌ 6 (já era!)</p>
+    </div>
+    <div class="card">
+      <h3>Boletim</h3>
+      <p>📉 "A nota é um conceito!"</p>
+    </div>
+    <a href="conquistas.html" style="text-decoration: none; color: inherit;">
+  <div class="card">
+    <h3>Conquistas</h3>
+    <p>🏆 Sobreviver à aula</p>
+  </div>
+</a>
+  </div>
+
+  <h2>Agenda do caos 📅</h2>
+  <div class="agenda-item"><strong>10/06:</strong> Reunião do Conselho da Galhofa</div>
+  <div class="agenda-item"><strong>18/06:</strong> Excursão pra lugar nenhum</div>
+
+  <footer>
+    &copy; 2025 Sala Sem Futuro - Painel do Estudante
+  </footer>
+</body>
+</html>
+
+<a class="btn-voltar" href="notas.html">📖 Ver Minhas Notas</a>
