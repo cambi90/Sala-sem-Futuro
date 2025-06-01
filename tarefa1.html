@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarefa 1 - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+    }
+    input[type='text'] {
+      width: 100%;
+      padding: 10px;
+      background: #111;
+      border: 1px solid #f00;
+      color: #fff;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 10px 20px;
+      background: #f00;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .resultado {
+      margin-top: 2rem;
+      font-size: 1.2em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Tarefa 1: Matemática da Depressão</h1>
+
+  <form onsubmit="verificar(event)">
+    <label>1. Quanto é 2 + 2?</label>
+    <input type="text" id="q1" required>
+
+    <label>2. Quanto é 5 x 3?</label>
+    <input type="text" id="q2" required>
+
+    <label>3. Raiz quadrada de 49?</label>
+    <input type="text" id="q3" required>
+
+    <button type="submit">Enviar Respostas</button>
+  </form>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function verificar(event) {
+      event.preventDefault();
+      const r1 = document.getElementById('q1').value.trim();
+      const r2 = document.getElementById('q2').value.trim();
+      const r3 = document.getElementById('q3').value.trim();
+
+      let acertos = 0;
+      if (r1 === '4') acertos++;
+      if (r2 === '15') acertos++;
+      if (r3 === '7') acertos++;
+
+      const res = document.getElementById('resultado');
+      if (acertos === 3) {
+        res.innerHTML = "<p style='color: #ff0000;'>Ridículo. Quem te mandou estudar? 😒</p>"; localStorage.setItem("conquista_inaceitavel", "true");
+      } else if (acertos === 0) {
+        res.innerHTML = "<p style='color: #0f0;'>PARABÉNS! Você dominou a arte de falhar! 🎉</p>"; localStorage.setItem("conquista_burro_profissional", "true");
+      } else {
+        res.innerHTML = `<p>Você acertou ${acertos}/3. Ainda dá tempo de não fazer nada!</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
