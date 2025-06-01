@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarefas - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #111;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #f00;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .card:hover {
+      background: #f00;
+      color: #000;
+    }
+    .feito {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+    .mensagem-final {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Tarefas da Vergonha</h1>
+  <p>Clique para marcar como feita. Mas cuidado com as consequências...</p>
+
+  <div id="tarefas"></div>
+  <div id="msg" class="mensagem-final"></div>
+
+  <script>
+    const listaTarefas = [
+      { id: "t1", texto: "Revisar conteúdos de Matemática" },
+      { id: "t2", texto: "Sobreviver ao Matifrick" },
+      { id: "t3", texto: "Resolver atividade de artes abstratas" }
+    ];
+
+    function atualizarTarefas() {
+      const container = document.getElementById("tarefas");
+      container.innerHTML = "";
+      let feitas = 0;
+
+      listaTarefas.forEach(t => {
+        const feita = localStorage.getItem("feito_" + t.id) === "true";
+        if (feita) feitas++;
+
+        const div = document.createElement("div");
+        div.className = "card" + (feita ? " feito" : "");
+        div.textContent = t.texto;
+        div.onclick = () => marcarFeita(t.id);
+        container.appendChild(div);
+      });
+
+      if (feitas === listaTarefas.length) {
+        document.getElementById("msg").innerHTML = "💀 Parabéns... você fez tudo. Decepcionante. O caos te abandonou.";
+        localStorage.setItem("conquista_traidor_do_caos", "true");
+      }
+    }
+
+    function marcarFeita(id) {
+      localStorage.setItem("feito_" + id, "true");
+      atualizarTarefas();
+    }
+
+    window.onload = atualizarTarefas;
+  </script>
+</body>
+</html>
