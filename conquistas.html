@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Conquistas - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    .conquista {
+      background: #111;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 10px #f00;
+    }
+    .bloqueada {
+      opacity: 0.3;
+    }
+    .conquista h3 {
+      margin: 0.5rem 0;
+    }
+    .btn-resetar {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background: #f00;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏆 Suas Conquistas</h1>
+  <div id="conquistas-container"></div>
+
+  <button class="btn-resetar" onclick="resetar()">Resetar Conquistas</button>
+
+  <script>
+    const conquistas = [
+      {
+        id: "explorador",
+        titulo: "Explorador do Fracasso",
+        descricao: "Você clicou em todas as abas mesmo sabendo que nada ia mudar."
+      },
+      {
+        id: "pendencias3",
+        titulo: "Aceitação Total",
+        descricao: "Você abriu a aba de Pendências 3 vezes. É oficial."
+      },
+      {
+        id: "burro_profissional",
+        titulo: "Burro Profissional",
+        descricao: "Errou tudo em uma tarefa e ainda saiu sorrindo."
+      },
+      {
+        id: "inaceitavel",
+        titulo: "Inaceitavelmente Esperto",
+        descricao: "Acertou tudo em uma tarefa. O site desaprova."
+      }
+    ];
+
+    function mostrarConquistas() {
+      const container = document.getElementById("conquistas-container");
+      container.innerHTML = "";
+
+      conquistas.forEach(c => {
+        const desbloqueada = localStorage.getItem("conquista_" + c.id) === "true";
+        const div = document.createElement("div");
+        div.className = "conquista" + (desbloqueada ? "" : " bloqueada");
+        div.innerHTML = `<h3>${desbloqueada ? '🏆' : '🏆 ???'} ${desbloqueada ? c.titulo : "???"}</h3>
+                         <p>${desbloqueada ? c.descricao : "Conquista secreta"}</p>`;
+        container.appendChild(div);
+      });
+    }
+
+    function resetar() {
+      conquistas.forEach(c => localStorage.removeItem("conquista_" + c.id));
+      localStorage.removeItem("contagem_pendencias");
+      mostrarConquistas();
+    }
+
+    mostrarConquistas();
+  </script>
+
+</body>
+</html>
