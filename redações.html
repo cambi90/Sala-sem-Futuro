@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Redações - Sala Sem Futuro</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f00;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #111;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #f00;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .card:hover {
+      background: #f00;
+      color: #000;
+    }
+    .feito {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+    .mensagem-final {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 Redações de Desespero</h1>
+  <p>Marque as redações feitas. Se você concluir tudo... lamentável!</p>
+
+  <div id="redacoes"></div>
+  <div id="msg" class="mensagem-final"></div>
+
+  <script>
+    const redacoes = [
+      { id: "r1", texto: "Redação: O que é procrastinar e por que faço isso tão bem?" },
+      { id: "r2", texto: "Redação: Justifique o injustificável" }
+    ];
+
+    function atualizar() {
+      const container = document.getElementById("redacoes");
+      container.innerHTML = "";
+      let feitas = 0;
+
+      redacoes.forEach(r => {
+        const feita = localStorage.getItem("feito_" + r.id) === "true";
+        if (feita) feitas++;
+
+        const div = document.createElement("div");
+        div.className = "card" + (feita ? " feito" : "");
+        div.textContent = r.texto;
+        div.onclick = () => marcarFeita(r.id);
+        container.appendChild(div);
+      });
+
+      if (feitas === redacoes.length) {
+        document.getElementById("msg").innerHTML = "🧠 Parabéns por escrever... mas isso não vai mudar seu futuro!";
+        localStorage.setItem("conquista_redator_falido", "true");
+      }
+    }
+
+    function marcarFeita(id) {
+      localStorage.setItem("feito_" + id, "true");
+      atualizar();
+    }
+
+    window.onload = atualizar;
+  </script>
+</body>
+</html>
